@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    // session_start();
     
     class CreateSession {
         private $host = 'db';
@@ -30,6 +30,7 @@
 
             }
 
+            
         } catch(\Exception $e){
             echo "Database error: " . $e->getMessage();
         }

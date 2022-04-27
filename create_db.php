@@ -47,7 +47,6 @@ class CreateDatabase {
                 phonenumber VARCHAR(14) NOT NULL,
                 gender VARCHAR(12) NOT NULL
                 )";
-
             $stmt = $conn->prepare($query);
             $stmt->execute();
 

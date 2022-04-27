@@ -1,7 +1,10 @@
-<?php 
+<?php
+include('includes/sessions.php');
+
 include("create_session.php");
 $objectDB = new CreateSession;
-$objectDB->connect();  
+$objectDB->connect();
+
 include("./db.php");
 include("signup/login_page.php");
 
@@ -16,6 +19,7 @@ include("signup/login_page.php");
     <title>Document</title>
 </head>
 <body>
+    <?= include("./includes/header.php") ?>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
         <div>
             <label for="login-email">Email</label>
@@ -25,7 +29,7 @@ include("signup/login_page.php");
             <label for="login-password">Password</label>
             <input type="password" name="login-password" id="login-password"/>
         </div>
-        <input type="submit" value="Login"></input>
+        <button type="submit">Login</button>
          <a href="signup/signup_page.php" >Sign up</a>
     </form>
 </body>

@@ -19,7 +19,7 @@ if(isset($_POST['update'])) {
     $phonenumber = ($_POST['updatePhone']) ?? ($_POST['updatePhone']);
     $gender = ($_POST['updateGender']) ?? ($_POST['updateGender']);
 
-    $query = "UPDATE crud_table SET ";
+    $query = "UPDATE form_table_123 SET ";
     $query .= "firstname = :firstname, ";
     $query .= "lastname = :lastname, ";
     $query .= "email = :email, ";

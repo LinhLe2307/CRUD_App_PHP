@@ -1,4 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color: #ffffff;
+  --border: 1px solid black;
+}
+
+body {
+  background-color: rgb(107, 107, 224);
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  font-family: "Raleway", sans-serif;
+}
+
+header {
+    height: 5rem;
+    background-color: #564d58;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    color: var(--color);
+  }
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25rem;
+  background-color: aliceblue;
+  gap: 2rem;
+  border-radius: 5px;
+  padding: 2rem;
+}
+
+label {
+  width: 7rem;
+  height: 2rem;
+  display: inline-block;
+}
+
+button {
+  width: 6rem;
+  height: 2.5rem;
+  border-style: none;
+  border-radius: 5px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6b4874;
+  color: var(--color);
+  transform: scale(1.1);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: var(--border);
+  font-family: inherit;
+  padding: 0 0.5rem;
 }

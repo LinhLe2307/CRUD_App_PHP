@@ -1,4 +1,5 @@
 <?php 
+    include('../includes/sessions.php');
     include("../db.php");
 
     // Validate homepage
@@ -24,6 +25,10 @@
 <body>
     <header>
         <h1>Linh Le</h1>
+        <?php if($logged_in) {
+             echo '<a href="../signup/logout.php">Log Out</a>' ;
+        } 
+        ?>
     </header>
     <main>
         <h1 id="title">Form</h1>

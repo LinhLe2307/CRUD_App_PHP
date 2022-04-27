@@ -1,6 +1,12 @@
 <?php 
-    include("../db.php");
-      
+// session_start();
+    // if (!isset($_SESSION['first_run']) || $_SESSION['first_run'] = "") {
+        include("../create_session.php");
+        $objectDB = new CreateSession;
+        $objectDB->connect();
+    // }
+
+    include("../db.php");  
 
     // Validate homepage
     function test_inputs($data) {
@@ -23,9 +29,6 @@
     <title>Form Application</title>
 </head>
 <body>
-    <header>
-        <h1>Linh Le</h1>
-    </header>
     <main>
         <h1 id="title">Form</h1>
         <form method="post" action="" class="form-container">
