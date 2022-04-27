@@ -2,7 +2,7 @@
     //Connect to MyPhp App    
     class DatabaseConnect {
         private $host = 'db';
-        private $dbname = 'crud_app_1234';
+        private $dbname = 'Linh_Le_CRUD';
         private $user = 'root';
         private $pass = 'lionPass';
         public function connect(){

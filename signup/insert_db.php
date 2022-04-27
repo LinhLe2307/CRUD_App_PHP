@@ -29,7 +29,7 @@
 
                         $objectDB = new DatabaseConnect;
                         $conn = $objectDB->connect();
-                        $sql = 'INSERT INTO user_account(id, firstname, lastname, email, password, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :password, :phonenumber, :gender)';
+                        $sql = 'INSERT INTO user_registration_123(id, firstname, lastname, email, password, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :password, :phonenumber, :gender)';
                         $stmt = $conn->prepare($sql);
                             
                         $stmt->bindValue(':firstname', $firstname);
