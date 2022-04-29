@@ -1,5 +1,6 @@
 <?php 
     include('../includes/sessions.php');
+    require_login($logged_in);
     include("../db.php");
 
     // Validate homepage

@@ -19,7 +19,7 @@ include("signup/login_page.php");
     <title>Document</title>
 </head>
 <body>
-    <?= include("./includes/header.php") ?>
+    <?php include("./includes/header.php") ?>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
         <div>
             <label for="login-email">Email</label>
@@ -30,7 +30,8 @@ include("signup/login_page.php");
             <input type="password" name="login-password" id="login-password"/>
         </div>
         <button type="submit">Login</button>
-         <a href="signup/signup_page.php" >Sign up</a>
+        <a href="signup/updated_password.php" >Change password</a>
+        <a href="signup/signup_page.php" >Sign up</a>
     </form>
 </body>
 </html>

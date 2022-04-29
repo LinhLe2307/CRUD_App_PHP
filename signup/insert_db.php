@@ -1,7 +1,7 @@
 <?php 
-    // $method = $_SERVER['REQUEST_METHOD'];
-    // switch ($method) {
-        //     case 'POST':
+    $method = $_SERVER['REQUEST_METHOD'];
+    switch ($method) {
+        case 'POST':
             if (isset($_POST['submit'])) {
                 // This is for sanitizing the user's inputs
                 $firstname = test_inputs($_POST['firstname']);
@@ -11,8 +11,15 @@
                 $phonenumber = test_inputs($_POST['phonenumber']);
                 $gender = test_inputs($_POST['gender'] ?? "");
                 
+
                 if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($phonenumber) && !empty($gender)) {
                     
+                    // Password encryption
+                    $hashFormat = "$2y$10$";
+                    $salt = "helsinkibusinesscollege";
+                    $hashFormatAndSalt = $hashFormat . $salt;
+                    $pass_encrypted = crypt($password, $hashFormatAndSalt);
+
                     $objectDB = new DatabaseConnect;
                     $conn = $objectDB->connect();
                     $query = "SELECT * FROM user_registration_123 WHERE email=:email";
@@ -23,6 +30,7 @@
                     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
                         if($stmt->rowCount()!=0){
+                            
                             //Email already registered. Exit with a message
                             exit('Email already exists');
                         }
@@ -35,7 +43,7 @@
                         $stmt->bindValue(':firstname', $firstname);
                         $stmt->bindValue(':lastname', $lastname);
                         $stmt->bindValue(':email', $email);
-                        $stmt->bindValue(':password', $password);
+                        $stmt->bindValue(':password', $pass_encrypted);
                         $stmt->bindValue(':phonenumber', $phonenumber);
                         $stmt->bindValue(':gender', $gender);
 
@@ -58,7 +66,7 @@
                     $displayMsg = "Please fill in all fields!";
                     $msgClass = "danger-alert";
                 }
-   
+    }
 }
         
     

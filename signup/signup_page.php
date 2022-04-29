@@ -29,6 +29,7 @@
     <title>Form Application</title>
 </head>
 <body>
+    <?php include("../includes/header.php") ?>
     <main>
         <h1 id="title">Form</h1>
         <form method="post" action="" class="form-container">

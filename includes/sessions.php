@@ -18,3 +18,10 @@ function logout() { //terminate the session
     
     unset($_SESSION['logged_in']);
 }
+
+function require_login($logged_in) {
+    if($logged_in === false) {
+        header('Location: ../index.php');
+        exit;
+    }
+}

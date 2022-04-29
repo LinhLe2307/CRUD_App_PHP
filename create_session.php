@@ -19,10 +19,12 @@
             if (empty($stmt->fetchAll(PDO::FETCH_ASSOC))) {
                 
                 // unset if exists
-                unset($_SESSION['first_run']);
-                
-                //create a new session
-                $_SESSION['first_run'] = 1;
+                if(isset($_SESSION['first_run'])){
+                    unset($_SESSION['first_run']);
+                } else {
+                    //create a new session
+                    ($_SESSION['first_run'] = 1);
+                }  
 
                 include ("create_db.php");
                 $objectDB = new CreateDatabase;
