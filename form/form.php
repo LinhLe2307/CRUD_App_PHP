@@ -32,7 +32,7 @@
         ?>
     </header>
     <main>
-        <h1 id="title">Form</h1>
+        <h1 id="title">Contact Form</h1>
         <form method="post" action="<?= $_SERVER['PHP_SELF']?>" class="form-container">
             <div>
                 <label for="firstname">First name: </label>

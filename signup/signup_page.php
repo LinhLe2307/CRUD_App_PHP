@@ -1,10 +1,7 @@
 <?php 
-// session_start();
-    // if (!isset($_SESSION['first_run']) || $_SESSION['first_run'] = "") {
-        include("../create_session.php");
-        $objectDB = new CreateSession;
-        $objectDB->connect();
-    // }
+    include("../create_session.php");
+    $objectDB = new CreateSession;
+    $objectDB->connect();
 
     include("../db.php");  
 
@@ -47,7 +44,7 @@
             </div>
             <div>
                 <label for="password">Password: </label>
-                <input type="password" id="password" name="password" value="<?= isset($_POST['password']) ? test_inputs($_POST['password']) : "" ?>"/>
+                <input type="password" id="password" name="password" />
             </div>
             <div>
                 <label for="phonenumber">Phone Number: </label>
@@ -81,9 +78,14 @@
                 <label for="other">Other </label>
             </div>
             <button type="submit" name="submit" class="btn submitBtn">SUBMIT</button>
+
+            <!-- Insert all users' inputs to database -->
             <?php include("insert_db.php")?>
            
         </form>
+        
+        <!-- Back to index.php -->
+        <a href="../index.php" class="back-link">Back</a>
     </main>
 </body>
 </html>

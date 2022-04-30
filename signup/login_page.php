@@ -1,4 +1,5 @@
 <?php
+    // Create DatabaseConnect object
     $objectDb = new DatabaseConnect;
     $conn = $objectDb->connect();
 
@@ -10,26 +11,28 @@
         header('Location: form/form.php');
         exit;
     }
-
-    
+ 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $user_email = $_POST['login-email'];
-        $user_password = $_POST['login-password'];
+        $userEmail = $_POST['login-email'];
+        $userPassword = $_POST['login-password'];
 
         // Password encryption
         $hashFormat = "$2y$10$";
         $salt = "helsinkibusinesscollege";
         $hashFormatAndSalt = $hashFormat . $salt;
-        $pass_encrypted = crypt($user_password, $hashFormatAndSalt);
+        $passEncrypted = crypt($userPassword, $hashFormatAndSalt);
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            if ($user_email === $row['email'] && $pass_encrypted === $row['password']) {
+            if ($userEmail === $row['email'] && $passEncrypted === $row['password']) {
                 login();
                 // login(); //Call login function
                 header('Location: form/form.php'); // Redirect to form page
                 exit;
+            } else {
+                $displayMsg = ('Please enter correct email and password');
+                $msgClass = "danger-alert";
             }
         }
     }

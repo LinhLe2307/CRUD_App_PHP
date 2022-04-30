@@ -1,13 +1,28 @@
 <?php
+// Session for login/ logout
 include('includes/sessions.php');
 
+// Session for creating new database
 include("create_session.php");
 $objectDB = new CreateSession;
 $objectDB->connect();
 
+// Connect to MyPhp App
 include("./db.php");
+
+// Check if users login
 include("signup/login_page.php");
 
+// Validate homepage
+function test_inputs($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$msgClass = "";
+$displayMsg = "";
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +35,20 @@ include("signup/login_page.php");
 </head>
 <body>
     <?php include("./includes/header.php") ?>
+    <?php if( $displayMsg != "") {
+    ?>
+        <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
+    <?php        
+        }
+    ?>
     <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
         <div>
             <label for="login-email">Email</label>
-            <input type="email" name="login-email" id="login-email"/>
+            <input type="email" name="login-email" id="login-email" placeholder="Please enter email" value="<?= isset($_POST['login-email']) ? test_inputs($_POST['login-email']) : "" ?>"/>
         </div>
         <div>
             <label for="login-password">Password</label>
-            <input type="password" name="login-password" id="login-password"/>
+            <input type="password" name="login-password" id="login-password" placeholder="Please enter password"/>
         </div>
         <button type="submit">Login</button>
         <a href="signup/updated_password.php" >Change password</a>

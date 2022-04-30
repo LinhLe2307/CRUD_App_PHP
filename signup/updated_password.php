@@ -2,9 +2,16 @@
     include("../db.php");  
     $objectDb = new DatabaseConnect;
     $conn = $objectDb->connect();
+    function test_inputs($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    $msgClass = "";
+    $displayMsg = "";
 
-    // $method = $_SERVER[];
-    if(isset($_POST['submit'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $email = $_POST['email'];
         $oldPassword = $_POST['old-password'];
@@ -25,8 +32,8 @@
         $stmt->execute();
 
         if (!$stmt->rowCount() ) {
-            echo ("Please enter a valid address");
-            // exit;
+            $displayMsg = ("Please enter valid inputs");
+            $msgClass = "danger-alert";
         } else {
 
             $query2 = "SELECT password FROM user_registration_123 ";
@@ -49,9 +56,15 @@
                         $stmt->bindValue(':password', $passEncrypted);
                         $stmt->bindValue(':email', $email);
                         $stmt->execute();
+                        $displayMsg = "Update password successfully!";
+                        $msgClass = "success-alert";
                     } else {
-                        echo 'Please enter the same password';
+                        $displayMsg = 'Please update the same passwords';
+                         $msgClass = "danger-alert";
                     }
+                } else {
+                    $displayMsg = 'Please enter the correct password';
+                    $msgClass = "danger-alert";
                 }
                 break;
             }
@@ -72,11 +85,17 @@
 </head>
 <body>
     <?php include("../includes/header.php") ?>
-    <h1>CHANGE PASSWORD</h1>
+    <h1>Change Password</h1>
+    <?php if($displayMsg != "") {
+    ?>
+        <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
+    <?php        
+        }
+    ?>
     <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
         <div>
             <label for='email'>Please enter email</label>
-            <input id='email' name='email' type="email"/>
+            <input id='email' name='email' type="email" value= "<?= isset($_POST['email']) ? test_inputs($_POST['email']) : "" ?>"/>
         </div>
         <div>
             <label for='old-password'>Please enter your old password</label>
@@ -91,6 +110,8 @@
             <input id='update-password-again' name='update-password-again' type="password" />
         </div>
         <button type=submit name='submit'>UPDATE</button>
-    </form>
+</form>
+<a href="../index.php" class="back-link">Back</a>
+
 </body>
 </html>

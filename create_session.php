@@ -1,6 +1,5 @@
 <?php 
-    // session_start();
-    
+
     class CreateSession {
         private $host = 'db';
         private $dbname = 'Linh_Le_CRUD';
