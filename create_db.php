@@ -26,19 +26,8 @@ class CreateDatabase {
             $stmt = $conn->prepare($query);
             $stmt->execute();
             
-            // $query = "CREATE TABLE form_table_123(
-            //     id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            //     firstname VARCHAR(50) NOT NULL,
-            //     lastname VARCHAR(50) NOT NULL,
-            //     email VARCHAR(50) NOT NULL,
-            //     phonenumber VARCHAR(14) NOT NULL,
-            //     gender VARCHAR(12) NOT NULL
-            //     )";
-            // $stmt = $conn->prepare($query);
-            // $stmt->execute();
 
-
-            $query = "CREATE TABLE user_registration_123(
+            $query = "CREATE TABLE IF NOT EXISTS user_registration_123(
                 id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 firstname VARCHAR(50) NOT NULL,
                 lastname VARCHAR(50) NOT NULL,

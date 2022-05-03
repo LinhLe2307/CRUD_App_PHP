@@ -35,7 +35,7 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 25rem;
+  width: 30rem;
   background-color: aliceblue;
   gap: 2rem;
   border-radius: 5px;
@@ -43,7 +43,7 @@ form {
 }
 
 label {
-  width: 7rem;
+  width: 10rem;
   height: 2rem;
   display: inline-block;
 }

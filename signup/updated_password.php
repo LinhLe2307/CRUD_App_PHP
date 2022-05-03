@@ -16,7 +16,7 @@
         $email = $_POST['email'];
         $oldPassword = $_POST['old-password'];
         $updatedPassword = $_POST['update-password'];
-        $updatedPassAgain = $_POST['update-password-again'];
+        $updatedPassAgain = $_POST['reenter-password'];
 
         // Password encryption
         $hashFormat = "$2y$10$";
@@ -95,19 +95,19 @@
     <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
         <div>
             <label for='email'>Please enter email</label>
-            <input id='email' name='email' type="email" value= "<?= isset($_POST['email']) ? test_inputs($_POST['email']) : "" ?>"/>
+            <input id='email' name='email' type="email" value= "<?= isset($_POST['email']) ? test_inputs($_POST['email']) : "" ?>" placeholder="Your email"/>
         </div>
         <div>
-            <label for='old-password'>Please enter your old password</label>
-            <input id='old-password' name='old-password' type="password" />
+            <label for='old-password'>Enter your old password</label>
+            <input id='old-password' name='old-password' type="password" placeholder="Old password"/>
         </div>
         <div>
-            <label for='update-password'>Please enter password</label>
-            <input id='update-password' name='update-password' type="password" />
+            <label for='update-password'>Enter your new password</label>
+            <input id='update-password' name='update-password' type="password" placeholder="New password"/>
         </div>
         <div>
-            <label for='update-password-again'>Please enter password again</label>
-            <input id='update-password-again' name='update-password-again' type="password" />
+            <label for='reenter-password'>Re-enter your new password</label>
+            <input id='reenter-password' name='reenter-password' type="password" placeholder="Re-enter new password"/>
         </div>
         <button type=submit name='submit'>UPDATE</button>
 </form>

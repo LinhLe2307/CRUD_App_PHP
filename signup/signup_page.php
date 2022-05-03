@@ -29,7 +29,7 @@
     <?php include("../includes/header.php") ?>
     <main>
         <a href="../index.php" class="back-link">Back</a>
-        <h1 id="title">Form</h1>
+        <h1 id="title">SignUp Form</h1>
         <form method="post" action="" class="form-container">
             <div>
                 <label for="firstname">First name: </label>

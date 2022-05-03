@@ -26,10 +26,11 @@
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             if ($userEmail === $row['email'] && $passEncrypted === $row['password']) {
-                login();
-                // login(); //Call login function
+                login(); //Call login function
                 header('Location: form/form.php'); // Redirect to form page
-                $_SESSION['userDatabase'] = $userEmail;
+
+                $_SESSION['userDatabase'] = $row['email']; // call the right database
+                $_SESSION['userName'] = $row['firstname'] . " " . $row['lastname'];
                 exit;
             } else {
                 $displayMsg = ('Please enter correct email and password');

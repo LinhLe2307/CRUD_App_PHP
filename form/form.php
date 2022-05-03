@@ -2,7 +2,6 @@
     include('../includes/sessions.php');
     require_login($logged_in);
     include("../db.php");
-    // include('../signup/login_page.php');
 
     // Validate homepage
     function test_inputs($data) {
@@ -26,13 +25,14 @@
 </head>
 <body>
     <header>
-        <h1>Contact Form</h1>
+        <h3>Welcome <?= $_SESSION['userName']?> !</h3>
         <?php if($logged_in) {
              echo '<a href="../signup/logout.php">Log Out</a>' ;
         } 
         ?>
     </header>
     <main>
+        <h1 id="title">Contact Form</h1>
         <form method="post" action="<?= $_SERVER['PHP_SELF']?>" class="form-container">
             <div>
                 <label for="firstname">First name: </label>

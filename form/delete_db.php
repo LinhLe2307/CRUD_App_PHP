@@ -4,7 +4,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $delete = $_POST['delete'];
             $objectDb = new DatabaseConnect;
             $conn = $objectDb->connect();
-            $query = "DELETE FROM form_table_123 ";
+            $query = "DELETE FROM `{$_SESSION['userDatabase']}` ";
             $query .= "WHERE id = :delete";
             $stmt = $conn->prepare($query);
             $stmt->bindValue(':delete', $delete);
