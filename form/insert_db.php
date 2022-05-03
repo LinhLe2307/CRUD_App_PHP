@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $objectDB = new DatabaseConnect;
                     $conn = $objectDB->connect();
-                    $sql = 'INSERT INTO form_table_123(id, firstname, lastname, email, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :phonenumber, :gender)';
+                    $sql = "INSERT INTO `{$_SESSION['userDatabase']}`(id, firstname, lastname, email, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :phonenumber, :gender)";
                     $stmt = $conn->prepare($sql);
                             
                     $stmt->bindValue(':firstname', $firstname);

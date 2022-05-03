@@ -1,3 +1,3 @@
 <header>
-    <h1>Linh Le</h1>
+    <h1>Contact Form</h1>
 </header>

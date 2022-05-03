@@ -1,7 +1,7 @@
 <?php
     $objectDB = new DatabaseConnect;
     $conn = $objectDB->connect();
-    $query = "SELECT * FROM form_table_123";
+    $query = "SELECT * FROM `{$_SESSION['userDatabase']}`";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if($displayMsg != "") {

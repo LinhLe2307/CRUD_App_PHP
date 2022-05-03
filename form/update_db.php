@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // This is for check whether or not email is valid
             if(filter_var($email[$x], FILTER_VALIDATE_EMAIL)) {
 
-                $query = "UPDATE form_table_123 SET ";
+                $query = "UPDATE `{$_SESSION['userDatabase']}` SET ";
                 $query .= "firstname = :firstname, ";
                 $query .= "lastname = :lastname, ";
                 $query .= "email = :email, ";

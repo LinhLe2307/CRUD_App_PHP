@@ -45,10 +45,23 @@
                 $stmt->bindValue(':password', $pass_encrypted);
                 $stmt->bindValue(':phonenumber', $phonenumber);
                 $stmt->bindValue(':gender', $gender);
+                // $stmt->execute();
 
                 if($stmt->execute()){
                     $displayMsg = "Add task successfully!";
                     $msgClass = "success-alert";
+                    
+                    $query = "CREATE TABLE `{$email}`(
+                        id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                        firstname VARCHAR(50) NOT NULL,
+                        lastname VARCHAR(50) NOT NULL,
+                        email VARCHAR(50) NOT NULL,
+                        phonenumber VARCHAR(14) NOT NULL,
+                        gender VARCHAR(12) NOT NULL
+                        )";
+                    $stmt2 = $conn->prepare($query);
+                    $stmt2->execute();                
+        
                 } else {
                     $displayMsg = "Please fill in all fields!";
                     $msgClass = "danger-alert";

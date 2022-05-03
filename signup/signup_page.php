@@ -28,6 +28,7 @@
 <body>
     <?php include("../includes/header.php") ?>
     <main>
+        <a href="../index.php" class="back-link">Back</a>
         <h1 id="title">Form</h1>
         <form method="post" action="" class="form-container">
             <div>
@@ -81,11 +82,10 @@
 
             <!-- Insert all users' inputs to database -->
             <?php include("insert_db.php")?>
-           
+            
         </form>
         
         <!-- Back to index.php -->
-        <a href="../index.php" class="back-link">Back</a>
     </main>
 </body>
 </html>

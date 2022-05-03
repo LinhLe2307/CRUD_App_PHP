@@ -29,6 +29,7 @@
                 login();
                 // login(); //Call login function
                 header('Location: form/form.php'); // Redirect to form page
+                $_SESSION['userDatabase'] = $userEmail;
                 exit;
             } else {
                 $displayMsg = ('Please enter correct email and password');
