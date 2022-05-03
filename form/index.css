@@ -113,6 +113,10 @@ input:nth-child(2n) {
   background-color: #f5cdff;
 }
 
+a {
+  color: var(--color);
+}
+
 .btn {
   width: 6rem;
   height: 2.5rem;
