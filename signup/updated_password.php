@@ -80,38 +80,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <title>Document</title>
 </head>
 <body>
     <?php include("../includes/header.php") ?>
-    <h1>Change Password</h1>
+    <h1 id="title">Change Password</h1>
     <?php if($displayMsg != "") {
     ?>
         <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
     <?php        
         }
-    ?>
+        ?>
     <form action="<?= $_SERVER['PHP_SELF']?>" method="post">
         <div>
-            <label for='email'>Please enter email</label>
+            <label for='email'>Enter your email</label>
             <input id='email' name='email' type="email" value= "<?= isset($_POST['email']) ? test_inputs($_POST['email']) : "" ?>" placeholder="Your email"/>
         </div>
         <div>
-            <label for='old-password'>Enter your old password</label>
+            <label for='old-password'>Enter old password</label>
             <input id='old-password' name='old-password' type="password" placeholder="Old password"/>
         </div>
         <div>
-            <label for='update-password'>Enter your new password</label>
+            <label for='update-password'>Enter new password</label>
             <input id='update-password' name='update-password' type="password" placeholder="New password"/>
         </div>
         <div>
-            <label for='reenter-password'>Re-enter your new password</label>
+            <label for='reenter-password'>Re-enter new password</label>
             <input id='reenter-password' name='reenter-password' type="password" placeholder="Re-enter new password"/>
         </div>
         <button type=submit name='submit'>UPDATE</button>
-</form>
-<a href="../index.php" class="back-link">Back</a>
+    </form>
+    <a href="../index.php" class="back-link">Back</a>
 
 </body>
 </html>

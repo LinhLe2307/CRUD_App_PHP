@@ -42,6 +42,10 @@ form {
   padding: 2rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 label {
   width: 10rem;
   height: 2rem;
@@ -84,6 +88,10 @@ input[type="tel"] {
   color: var(--color);
 }
 
+#title {
+  text-align: center;
+}
+
 .success-alert {
   background-color: #3464e9;
 }
@@ -99,10 +107,20 @@ input[type="tel"] {
   border-style: none;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .back-link:hover {
   background-color: #6b4874;
   color: var(--color);
   transform: scale(1.1);
+}
+
+.gender {
+  width: 5.5rem;
 }

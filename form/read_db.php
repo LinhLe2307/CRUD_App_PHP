@@ -10,7 +10,7 @@
 <?php        
     }
 ?>
-<table>
+<table class="output-container">
     <tr>
         <th>ID</th>
         <th>First Name</th>
@@ -34,10 +34,25 @@
             <td><input name="updateEmail[]" id="update-email" value="<?= $row['email']?>" required /></td>
             <td><input name="updatePhone[]" id="update-phonenumber" value="<?= $row['phonenumber']?>" required /></td>
             <td> <?= $row['gender']?>
-                <select name="updateGender[]">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                <select name="updateGender[]" >
+                    <option value="Male"
+                        <?= 
+                           (($row['gender'] === 'Male')) ? ' selected="selected"' : ""
+                            
+                        ?>
+                    >Male</option>
+                    <option value="Female"
+                        <?= 
+                            (($row['gender'] === 'Female')) ? ' selected="selected"' : "";
+                        ?>
+                    >Female</option>
+                    <option value="Other"
+                        <?=
+                            (($row['gender'] === 'Other')) ? ' selected="selected"' : "" ;
+                            
+                        ?>
+                    >Other</option>
+                </select>
             </td>
             <td>
                 <button type="submit" name="update" class="btn updateBtn" value="<?= $id; ?>">UPDATE</button>
