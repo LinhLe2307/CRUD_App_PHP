@@ -40,6 +40,7 @@ form {
   gap: 2rem;
   border-radius: 5px;
   padding: 2rem;
+  position: relative;
 }
 
 a {
@@ -132,5 +133,21 @@ input[type="tel"] {
 @media (max-width: 975px) {
   label {
     display: block;
+    width: auto;
+  }
+
+  form {
+    padding: 2rem 0;
+    gap: 1rem;
+  }
+
+  .gender {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 575px) {
+  .gender {
+    width: 4.5rem;
   }
 }

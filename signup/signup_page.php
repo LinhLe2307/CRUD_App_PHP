@@ -29,7 +29,7 @@
     <?php include("../includes/header.php") ?>
     <main>
         <h1 id="title">SignUp Form</h1>
-        <form method="post" action="" class="form-container">
+        <form method="post" action="">
             <div>
                 <label for="firstname">First name: </label>
                 <input type="text" id="firstname" name="firstname" placeholder="First Name"value="<?= isset($_POST['firstname']) ? test_inputs($_POST['firstname']) : "" ?>"/>

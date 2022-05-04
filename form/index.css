@@ -12,6 +12,7 @@
 
 body {
   font-family: "Raleway", sans-serif;
+  max-width: 1800px;
 }
 
 header {
@@ -177,6 +178,10 @@ a.hover {
   #update-email,
   #update-phonenumber {
     min-width: 10rem;
+  }
+
+  .gender {
+    display: inline-block;
   }
   .output-container {
     width: 100%;
