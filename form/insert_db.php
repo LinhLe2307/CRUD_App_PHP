@@ -1,6 +1,7 @@
 <?php 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(isset($_POST['submit'])) {
             // This is for sanitizing the user's inputs
             $firstname = test_inputs($_POST['firstname']);
             $lastname = test_inputs($_POST['lastname']);
@@ -36,6 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $displayMsg = "Please fill in all fields!";
                     $msgClass = "danger-alert";  
             }   
+        }
 
 }
     

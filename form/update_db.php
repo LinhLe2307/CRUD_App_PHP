@@ -3,7 +3,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($_POST['update'])) {
             $update = ($_POST['update']);
             $userId = $_POST['userId'];
-
             // Since the data is displayed by table, we need to know the position where the updated data is 
             $count = count($userId);
             for($x = 0; $x < $count; $x += 1){
@@ -41,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->bindValue(':update', $update);
                         
                 if(!$stmt->execute()) {
-                    $displayMsg = die('Update task(s) failed!');
+                    $displayMsg = ('Update task(s) failed!');
                     $msgClass = "danger-alert";
                 } else {
                     $displayMsg = ('Update task(s) successfully!');

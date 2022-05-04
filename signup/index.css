@@ -46,6 +46,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underlinel;
+}
+
 label {
   width: 10rem;
   height: 2rem;
@@ -123,4 +127,10 @@ input[type="tel"] {
 
 .gender {
   width: 5.5rem;
+}
+
+@media (max-width: 975px) {
+  label {
+    display: block;
+  }
 }

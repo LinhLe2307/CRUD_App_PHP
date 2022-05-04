@@ -105,13 +105,6 @@ label {
 #update-phonenumber {
   min-width: 13rem;
 }
-/* #update-firstname:nth-child(2n + 1),
-#update-lastname:nth-child(2n + 1),
-#update-email:nth-child(2n + 1),
-#update-phonenumber:nth-child(2n + 1) {
-  width: 10rem;
-  background-color: #f5cdff;
-} */
 
 table,
 th,
@@ -134,7 +127,7 @@ table {
 th {
   background: linear-gradient(#a984d1, #ddaee3);
   color: var(--color);
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
 }
 
 a {
@@ -146,7 +139,7 @@ a.hover {
 }
 
 .btn {
-  width: 6rem;
+  width: 5rem;
   height: 2.5rem;
   border-style: none;
   border-radius: 5px;
@@ -198,7 +191,6 @@ a.hover {
     display: block;
   }
 
-  /* Hide table headers (but not display: none;, for accessibility) */
   thead tr {
     position: absolute;
     top: -9999px;
@@ -210,20 +202,17 @@ a.hover {
   }
 
   td {
-    /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
     position: relative;
     padding-left: 50%;
-    /* text-align: center; */
+
     display: flex;
     justify-content: center;
     align-items: center;
   }
   td:before {
-    /* Now like a table header */
     position: absolute;
-    /* Top/left values mimic padding */
 
     top: 20%;
     left: 6px;
@@ -233,9 +222,6 @@ a.hover {
     white-space: nowrap;
   }
 
-  /*
-	Label the data
-	*/
   td:nth-of-type(1):before {
     content: "ID";
   }
@@ -260,6 +246,16 @@ a.hover {
 }
 
 @media (max-width: 575px) {
+  form {
+    width: 100%;
+    padding: 2rem 0;
+    gap: 1rem;
+  }
+
+  form div {
+    padding: 0;
+  }
+
   .gender {
     width: 4.5rem;
   }

@@ -5,11 +5,11 @@
     $stmt = $conn->prepare($query);
     $stmt->execute();
     if($displayMsg != "") {
-?>
-        <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
-<?php        
-    }
-?>
+    ?>
+            <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
+    <?php        
+        }
+    ?>
 <table class="output-container">
     <tr>
         <th>ID</th>
@@ -34,23 +34,15 @@
             <td><input name="updateEmail[]" id="update-email" value="<?= $row['email']?>" required /></td>
             <td><input name="updatePhone[]" id="update-phonenumber" value="<?= $row['phonenumber']?>" required /></td>
             <td> <?= $row['gender']?>
-                <select name="updateGender[]" >
+                <select name="updateGender[]">
                     <option value="Male"
-                        <?= 
-                           (($row['gender'] === 'Male')) ? ' selected="selected"' : ""
-                            
-                        ?>
+                        <?= ($row['gender'] === "Male") ? ' selected="selected"' : ""?>
                     >Male</option>
                     <option value="Female"
-                        <?= 
-                            (($row['gender'] === 'Female')) ? ' selected="selected"' : "";
-                        ?>
+                        <?= ($row['gender'] === "Female") ? ' selected="selected"' : ""?>
                     >Female</option>
                     <option value="Other"
-                        <?=
-                            (($row['gender'] === 'Other')) ? ' selected="selected"' : "" ;
-                            
-                        ?>
+                        <?= ($row['gender'] === "Other") ? ' selected="selected"' : ""?>
                     >Other</option>
                 </select>
             </td>
