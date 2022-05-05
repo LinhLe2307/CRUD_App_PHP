@@ -139,6 +139,7 @@ input[type="tel"] {
   form {
     padding: 2rem 0;
     gap: 1rem;
+    width: 100%;
   }
 
   .gender {
