@@ -1,7 +1,7 @@
 <?php 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if(isset($_POST['submit'])) {
+if(isset($_POST['submit'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // This is for sanitizing the user's inputs
             $firstname = test_inputs($_POST['firstname']);
             $lastname = test_inputs($_POST['lastname']);

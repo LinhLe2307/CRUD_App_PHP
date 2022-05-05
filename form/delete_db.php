@@ -1,6 +1,6 @@
 <?php 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['delete'])) {
+if (isset($_POST['delete'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $delete = $_POST['delete'];
             $objectDb = new DatabaseConnect;
             $conn = $objectDb->connect();

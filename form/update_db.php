@@ -1,6 +1,6 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if(isset($_POST['update'])) {
+if(isset($_POST['update'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $update = ($_POST['update']);
             $userId = $_POST['userId'];
             // Since the data is displayed by table, we need to know the position where the updated data is 
