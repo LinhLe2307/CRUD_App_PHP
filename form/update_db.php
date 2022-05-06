@@ -16,40 +16,45 @@ if(isset($_POST['update'])) {
             $firstname = ($_POST['updateFirstname']);
             $lastname = ($_POST['updateLastname']);
             $email = ($_POST['updateEmail']);
-            $phonenumber = ($_POST['updatePhone']);
+            $phonenumber = $_POST['updatePhone'];
             $gender = ($_POST['updateGender']);
 
-            // This is for check whether or not email is valid
-            if(filter_var($email[$x], FILTER_VALIDATE_EMAIL)) {
+            if (strlen($phonenumber[$x]) <= 14) {
 
-                $query = "UPDATE `{$_SESSION['userDatabase']}` SET ";
-                $query .= "firstname = :firstname, ";
-                $query .= "lastname = :lastname, ";
-                $query .= "email = :email, ";
-                $query .= "phonenumber = :phonenumber, ";
-                $query .= "gender = :gender ";
-                $query .= "WHERE id = :update";
+                // This is for check whether or not email is valid
+                if(filter_var($email[$x], FILTER_VALIDATE_EMAIL)) {
 
-                $stmt = $conn->prepare($query);
+                    $query = "UPDATE `{$_SESSION['userDatabase']}` SET ";
+                    $query .= "firstname = :firstname, ";
+                    $query .= "lastname = :lastname, ";
+                    $query .= "email = :email, ";
+                    $query .= "phonenumber = :phonenumber, ";
+                    $query .= "gender = :gender ";
+                    $query .= "WHERE id = :update";
 
-                $stmt->bindValue(':firstname', $firstname[$x]);
-                $stmt->bindValue(':lastname', $lastname[$x]);
-                $stmt->bindValue(':email', $email[$x]);
-                $stmt->bindValue(':phonenumber', $phonenumber[$x]);
-                $stmt->bindValue(':gender', $gender[$x]);
-                $stmt->bindValue(':update', $update);
-                        
-                if(!$stmt->execute()) {
-                    $displayMsg = ('Update task(s) failed!');
-                    $msgClass = "danger-alert";
+                    $stmt = $conn->prepare($query);
+
+                    $stmt->bindValue(':firstname', $firstname[$x]);
+                    $stmt->bindValue(':lastname', $lastname[$x]);
+                    $stmt->bindValue(':email', $email[$x]);
+                    $stmt->bindValue(':phonenumber', $phonenumber[$x]);
+                    $stmt->bindValue(':gender', $gender[$x]);
+                    $stmt->bindValue(':update', $update);
+                            
+                    if(!$stmt->execute()) {                   
+                        die('Update task(s) failed!');
+                    } else {
+                        $displayMsg = ('Update task(s) successfully!');
+                        $msgClass = "success-alert";
+                    }
                 } else {
-                    $displayMsg = ('Update task(s) successfully!');
-                    $msgClass = "success-alert";
+                    $displayMsg = "Please fill in all fields!";
+                    $msgClass = "danger-alert";
                 }
             } else {
-                $displayMsg = "Please fill in all fields!";
+                $displayMsg = ('Phone Number exceeds maximum characters!'); 
                 $msgClass = "danger-alert";
             }
-        }
-}       
+    }
+}
 ?>

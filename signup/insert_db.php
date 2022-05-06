@@ -23,58 +23,58 @@
             $stmt = $conn->prepare($query);
             $stmt->bindValue(':email', $email);
             $stmt->execute();
+            if (strlen($phonenumber) <= 14) {
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-            if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    if($stmt->rowCount()!=0){
+                                
+                        //Email already registered. Exit with a message
+                        die("Email already exists");
+                    }
 
-                if($stmt->rowCount()!=0){
-                            
-                    //Email already registered. Exit with a message
-                    $msgClass = "Email already exists";
-                    $displayMsg = "danger-alert";
-                    exit;
-                }
+                    $objectDB = new DatabaseConnect;
+                    $conn = $objectDB->connect();
+                    $sql = 'INSERT INTO user_registration_123(id, firstname, lastname, email, password, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :password, :phonenumber, :gender)';
+                    $stmt = $conn->prepare($sql);
+                                
+                    $stmt->bindValue(':firstname', $firstname);
+                    $stmt->bindValue(':lastname', $lastname);
+                    $stmt->bindValue(':email', $email);
+                    $stmt->bindValue(':password', $pass_encrypted);
+                    $stmt->bindValue(':phonenumber', $phonenumber);
+                    $stmt->bindValue(':gender', $gender);
 
-                $objectDB = new DatabaseConnect;
-                $conn = $objectDB->connect();
-                $sql = 'INSERT INTO user_registration_123(id, firstname, lastname, email, password, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :password, :phonenumber, :gender)';
-                $stmt = $conn->prepare($sql);
-                            
-                $stmt->bindValue(':firstname', $firstname);
-                $stmt->bindValue(':lastname', $lastname);
-                $stmt->bindValue(':email', $email);
-                $stmt->bindValue(':password', $pass_encrypted);
-                $stmt->bindValue(':phonenumber', $phonenumber);
-                $stmt->bindValue(':gender', $gender);
-
-                if($stmt->execute()){
-                    $displayMsg = "Add task successfully!";
-                    $msgClass = "success-alert";
-                    
-                    // Create individual table for each user
-                    $query = "CREATE TABLE IF NOT EXISTS `{$email}`(
-                        id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                        firstname VARCHAR(50) NOT NULL,
-                        lastname VARCHAR(50) NOT NULL,
-                        email VARCHAR(50) NOT NULL,
-                        phonenumber VARCHAR(14) NOT NULL,
-                        gender VARCHAR(12) NOT NULL
-                        )";
-                    $stmt2 = $conn->prepare($query);
-                    $stmt2->execute();                
-        
+                    if($stmt->execute()){
+                        $displayMsg = "Add task successfully!";
+                        $msgClass = "success-alert";
+                        
+                        // Create individual table for each user
+                        $query = "CREATE TABLE IF NOT EXISTS `{$email}`(
+                            id INTEGER(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                            firstname VARCHAR(50) NOT NULL,
+                            lastname VARCHAR(50) NOT NULL,
+                            email VARCHAR(50) NOT NULL,
+                            phonenumber VARCHAR(14) NOT NULL,
+                            gender VARCHAR(12) NOT NULL
+                            )";
+                        $stmt2 = $conn->prepare($query);
+                        $stmt2->execute();                
+            
+                    } else {
+                        die("Please fill in all fields!");
+                    }        
                 } else {
                     $displayMsg = "Please fill in all fields!";
                     $msgClass = "danger-alert";
                 }
-                    
+            } else {
+                $displayMsg = ('Phone Number exceeds maximum characters!'); 
+                $msgClass = "danger-alert";
+            }
         } else {
             $displayMsg = "Please fill in all fields!";
             $msgClass = "danger-alert";
         }
-    } else {
-        $displayMsg = "Please fill in all fields!";
-        $msgClass = "danger-alert";
-    }
 }
         
     

@@ -29,6 +29,8 @@
     <?php include("../includes/header.php") ?>
     <main>
         <h1 id="title">SignUp Form</h1>
+        <a href="../index.php" class="back-link">Back</a>
+        
         <form method="post" action="">
             <div>
                 <label for="firstname">First name: </label>
@@ -83,10 +85,16 @@
             <?php include("insert_db.php")?>
             
         </form>
+        <?php
+            if($displayMsg != "") {
+        ?>
+            <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
+        <?php        
+            }
+        ?>
         
         <!-- Back to index.php -->
     </main>
-    <a href="../index.php" class="back-link">Back</a>
 
 </body>
 </html>

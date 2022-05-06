@@ -86,6 +86,8 @@
 <body>
     <?php include("../includes/header.php") ?>
     <h1 id="title">Change Password</h1>
+    <a href="../index.php" class="back-link">Back</a>
+
     <?php if($displayMsg != "") {
     ?>
         <div class= "msg <?= $msgClass ?>"><?= $displayMsg ?></div>
@@ -111,7 +113,6 @@
         </div>
         <button type=submit name='submit'>UPDATE</button>
     </form>
-    <a href="../index.php" class="back-link">Back</a>
 
 </body>
 </html>

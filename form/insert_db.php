@@ -10,28 +10,33 @@ if(isset($_POST['submit'])) {
             $gender = test_inputs($_POST['gender'] ?? "");
                 
             if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($phonenumber) && !empty($gender)) {
-                if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $objectDB = new DatabaseConnect;
-                    $conn = $objectDB->connect();
-                    $sql = "INSERT INTO `{$_SESSION['userDatabase']}`(id, firstname, lastname, email, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :phonenumber, :gender)";
-                    $stmt = $conn->prepare($sql);
-                            
-                    $stmt->bindValue(':firstname', $firstname);
-                    $stmt->bindValue(':lastname', $lastname);
-                    $stmt->bindValue(':email', $email);
-                    $stmt->bindValue(':phonenumber', $phonenumber);
-                    $stmt->bindValue(':gender', $gender);
+                if (strlen($phonenumber) <= 14) {
+                    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $objectDB = new DatabaseConnect;
+                        $conn = $objectDB->connect();
+                        $sql = "INSERT INTO `{$_SESSION['userDatabase']}`(id, firstname, lastname, email, phonenumber, gender) VALUES(null, :firstname, :lastname, :email, :phonenumber, :gender)";
+                        $stmt = $conn->prepare($sql);
+                                
+                        $stmt->bindValue(':firstname', $firstname);
+                        $stmt->bindValue(':lastname', $lastname);
+                        $stmt->bindValue(':email', $email);
+                        $stmt->bindValue(':phonenumber', $phonenumber);
+                        $stmt->bindValue(':gender', $gender);
 
-                    if($stmt->execute()){
-                        $displayMsg = "Add task successfully!";
-                            $msgClass = "success-alert";
+                        if($stmt->execute()){
+                            $displayMsg = "Add task successfully!";
+                                $msgClass = "success-alert";
+                        } else {
+                            $displayMsg = "Please fill in all fields!";
+                            $msgClass = "danger-alert";
+                        }
                     } else {
                         $displayMsg = "Please fill in all fields!";
-                        $msgClass = "danger-alert";
+                        $msgClass = "danger-alert";  
                     }
                 } else {
-                    $displayMsg = "Please fill in all fields!";
-                    $msgClass = "danger-alert";  
+                    $displayMsg = ('Phone Number exceeds maximum characters!'); 
+                    $msgClass = "danger-alert";
                 }
             } else {
                     $displayMsg = "Please fill in all fields!";
